@@ -1,0 +1,644 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Tony — Systems Admin · Sydney</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Tony — Systems administrator and self-hosting enthusiast from Sydney. I build cleanup scripts, sysadmin tools, and gaming references.">
+<style>
+  :root {
+    color-scheme: dark;
+    --bg:      #0a0d12;
+    --bg-1:    #111720;
+    --bg-2:    #19212c;
+    --bg-card: #1c2533;
+    --border:  #2a3547;
+    --border-s:#3d5068;
+    --text:    #dde4ee;
+    --dim:     #7a8ea8;
+    --faint:   #4a5d75;
+    --blue:    #63b3ed;
+    --blue-g:  #90cdf4;
+    --green:   #68d391;
+    --green-g: #9ae6b4;
+    --amber:   #f6ad55;
+    --purple:  #b794f4;
+    --nav-h:   54px;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.65;
+    font-size: 16px;
+  }
+  a { color: var(--blue); text-decoration: none; }
+  a:hover { color: var(--blue-g); text-decoration: underline; }
+  code { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 0.88em; }
+  .wrap { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+  section { scroll-margin-top: calc(var(--nav-h) + 1rem); }
+
+  /* ── NAV ────────────────────────────────────────────── */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    height: var(--nav-h);
+    background: rgba(10,13,18,0.93);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center;
+  }
+  .nav-inner {
+    max-width: 1100px; margin: 0 auto; padding: 0 2rem;
+    width: 100%;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .nav-brand {
+    font-family: ui-monospace, monospace;
+    font-size: 0.85rem; font-weight: 600;
+    color: var(--text); letter-spacing: 0.04em;
+    white-space: nowrap;
+  }
+  .nav-brand em { color: var(--green); font-style: normal; }
+  .nav-links { display: flex; overflow-x: auto; scrollbar-width: none; }
+  .nav-links::-webkit-scrollbar { display: none; }
+  .nav-links a {
+    color: var(--dim); font-size: 0.72rem;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 0 0.9rem; height: var(--nav-h);
+    display: flex; align-items: center;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    font-family: ui-monospace, monospace;
+    transition: color 0.15s;
+    white-space: nowrap;
+    text-decoration: none; flex-shrink: 0;
+  }
+  .nav-links a:hover, .nav-links a.active { color: var(--blue-g); border-bottom-color: var(--blue); }
+  @media (max-width: 560px) { .nav-links { display: none; } }
+
+  /* ── HERO ────────────────────────────────────────────── */
+  .hero {
+    min-height: calc(100vh - var(--nav-h));
+    display: flex; align-items: center;
+    position: relative; overflow: hidden;
+    padding: 6rem 0 5rem;
+  }
+  .hero-bg {
+    position: absolute; inset: 0; z-index: 0;
+    background-image: radial-gradient(circle, rgba(99,179,237,0.065) 1px, transparent 1px);
+    background-size: 36px 36px;
+  }
+  .hero-bg::after {
+    content: ""; position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 65% 35%, rgba(104,211,145,0.08) 0%, transparent 55%),
+      radial-gradient(ellipse at 20% 70%, rgba(99,179,237,0.08) 0%, transparent 50%),
+      radial-gradient(ellipse at 85% 85%, rgba(183,148,244,0.05) 0%, transparent 40%);
+  }
+  .hero-inner {
+    position: relative; z-index: 1;
+    max-width: 1100px; margin: 0 auto; padding: 0 2rem;
+    width: 100%;
+  }
+  .hero-eyebrow {
+    font-family: ui-monospace, monospace;
+    font-size: 0.78rem; letter-spacing: 0.28em;
+    text-transform: uppercase; color: var(--green);
+    margin: 0 0 1.1rem;
+    display: flex; align-items: center; gap: 0.6rem;
+  }
+  .hero-eyebrow::before { content: "> "; color: var(--faint); }
+  h1.name {
+    font-size: clamp(3.8rem, 9vw, 7rem);
+    font-weight: 800; margin: 0 0 0.2rem;
+    letter-spacing: -0.04em; line-height: 1;
+    background: linear-gradient(140deg, var(--text) 0%, var(--blue-g) 55%, var(--green-g) 100%);
+    -webkit-background-clip: text; background-clip: text;
+    color: transparent;
+    background-size: 200% 200%;
+    animation: gradAnim 10s ease infinite;
+  }
+  @keyframes gradAnim {
+    0%,100% { background-position: 0% 50%; }
+    50%      { background-position: 100% 50%; }
+  }
+  .hero-title {
+    font-size: clamp(1rem, 2.2vw, 1.35rem);
+    color: var(--dim); font-weight: 400;
+    margin: 0.6rem 0 2rem;
+    font-family: ui-monospace, monospace;
+    letter-spacing: 0.04em;
+  }
+  .hero-title .hl { color: var(--blue-g); }
+  .hero-desc {
+    max-width: 540px; font-size: 1.05rem;
+    color: var(--dim); line-height: 1.8;
+    margin: 0 0 2.5rem;
+  }
+  .ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 2.5rem; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 0.65rem 1.35rem; border-radius: 8px;
+    font-size: 0.9rem; font-weight: 500;
+    text-decoration: none; transition: all 0.15s;
+    border: 1px solid transparent;
+  }
+  .btn-primary { background: var(--blue); color: #080b10; border-color: var(--blue); }
+  .btn-primary:hover { background: var(--blue-g); border-color: var(--blue-g); color: #080b10; text-decoration: none; }
+  .btn-outline { background: transparent; color: var(--text); border-color: var(--border-s); }
+  .btn-outline:hover { border-color: var(--blue); color: var(--blue-g); background: rgba(99,179,237,0.07); text-decoration: none; }
+  .hero-pills { display: flex; gap: 7px; flex-wrap: wrap; }
+  .pill {
+    font-family: ui-monospace, monospace; font-size: 0.7rem;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 3px 10px; border-radius: 99px;
+    border: 1px solid var(--border-s);
+    color: var(--dim); background: rgba(25,33,44,0.7);
+  }
+  .pill.g { color: var(--green-g); border-color: var(--green); background: rgba(104,211,145,0.07); }
+  .pill.b { color: var(--blue-g);  border-color: var(--blue);  background: rgba(99,179,237,0.07); }
+  .pill.a { color: var(--amber);   border-color: var(--amber); background: rgba(246,173,85,0.07); }
+  .pill.p { color: var(--purple);  border-color: var(--purple);background: rgba(183,148,244,0.07);}
+
+  /* ── SECTION CHROME ──────────────────────────────────── */
+  .sec { padding: 5rem 0; border-top: 1px solid var(--border); }
+  .sec-label {
+    font-family: ui-monospace, monospace;
+    font-size: 0.68rem; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--green);
+    margin: 0 0 0.45rem;
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .sec-label::before { content: "//"; color: var(--faint); }
+  h2.sec-title {
+    font-size: clamp(1.55rem, 3vw, 2.1rem);
+    font-weight: 700; margin: 0 0 0.45rem;
+    letter-spacing: -0.02em; color: var(--text);
+  }
+  .sec-sub { font-size: 0.97rem; color: var(--dim); margin: 0 0 2.5rem; max-width: 520px; }
+
+  /* ── ABOUT ───────────────────────────────────────────── */
+  .about-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 3.5rem; align-items: start; }
+  @media (max-width: 720px) { .about-grid { grid-template-columns: 1fr; gap: 2rem; } }
+  .about-text p { color: var(--dim); line-height: 1.85; margin: 0 0 1rem; }
+  .fact-list { list-style: none; padding: 0; margin: 0; }
+  .fact-list li { display: flex; gap: 10px; padding: 0.65rem 0; border-bottom: 1px solid var(--border); font-size: 0.88rem; }
+  .fact-list li:last-child { border-bottom: none; }
+  .fact-lbl { font-family: ui-monospace, monospace; font-size: 0.67rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--faint); min-width: 88px; flex-shrink: 0; padding-top: 2px; }
+  .fact-val { color: var(--text); }
+
+  /* ── CARDS ───────────────────────────────────────────── */
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; }
+  .card-grid.wide { grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); }
+  .card {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 1.35rem 1.5rem;
+    display: flex; flex-direction: column; gap: 9px;
+    transition: border-color 0.18s, box-shadow 0.18s, transform 0.18s;
+    position: relative; overflow: hidden;
+  }
+  .card::before {
+    content: ""; position: absolute; inset: 0; border-radius: 12px;
+    background: linear-gradient(135deg, rgba(99,179,237,0.05), transparent);
+    opacity: 0; transition: opacity 0.18s; pointer-events: none;
+  }
+  .card:hover { border-color: var(--border-s); box-shadow: 0 0 0 1px var(--border-s), 0 10px 30px rgba(0,0,0,0.4); transform: translateY(-2px); }
+  .card:hover::before { opacity: 1; }
+  .card-ico { font-size: 1.6rem; line-height: 1; }
+  .card-name { font-size: 0.96rem; font-weight: 600; color: var(--text); margin: 0; }
+  .card-ver { font-size: 0.7rem; font-weight: 400; color: var(--faint); font-family: ui-monospace, monospace; margin-left: 5px; }
+  .card-desc { font-size: 0.87rem; color: var(--dim); line-height: 1.65; flex: 1; margin: 0; }
+  .card-badges { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 1px; }
+  .badge { font-family: ui-monospace, monospace; font-size: 0.67rem; padding: 2px 8px; border-radius: 99px; letter-spacing: 0.04em; }
+  .b-mac   { background: #0C447C; color: #B5D4F4; }
+  .b-linux { background: #27500A; color: #C0DD97; }
+  .b-win   { background: #3C3489; color: #CECBF6; }
+  .b-py    { background: #633806; color: #FAC775; }
+  .b-poe   { background: #5C2E00; color: #FAC97A; }
+  .b-tab   { background: #003D52; color: #7DD6F0; }
+  .b-gpl   { background: #2E1065; color: #C4B5FD; }
+  .b-mit   { background: #1A4A1F; color: #A6E3A1; }
+  .b-dnd   { background: #4A1556; color: #E8B8F0; }
+  .b-html  { background: #5C2400; color: #FAC198; }
+  .b-elf   { background: #2E5C0F; color: #BCDFA0; }
+  .b-dock  { background: #003362; color: #7DC4E4; }
+  .b-self  { background: #1A3A1A; color: #90EE90; }
+  .card-links { display: flex; flex-direction: column; gap: 3px; margin-top: 1px; }
+  .card-lnk { font-size: 0.77rem; color: var(--blue); font-family: ui-monospace, monospace; text-decoration: none; }
+  .card-lnk:hover { color: var(--blue-g); text-decoration: underline; }
+  .card-lnk.muted { color: var(--faint); }
+  .card-lnk.muted:hover { color: var(--dim); }
+
+  /* ── BACK TO TOP ─────────────────────────────────────── */
+  .btt {
+    position: fixed; bottom: 2rem; right: 2rem;
+    background: var(--bg-2); border: 1px solid var(--border-s);
+    color: var(--blue-g); width: 40px; height: 40px;
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem; cursor: pointer; z-index: 200;
+    opacity: 0; transform: translateY(8px);
+    transition: opacity 0.2s, transform 0.2s; text-decoration: none;
+  }
+  .btt.show { opacity: 1; transform: translateY(0); }
+  .btt:hover { background: var(--border-s); text-decoration: none; color: var(--text); }
+
+  /* ── FOOTER ──────────────────────────────────────────── */
+  footer { border-top: 1px solid var(--border); padding: 3rem 0; }
+  .footer-inner { max-width: 1100px; margin: 0 auto; padding: 0 2rem; text-align: center; }
+  .footer-links { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-bottom: 1.25rem; }
+  .footer-links a { color: var(--dim); font-family: ui-monospace, monospace; font-size: 0.8rem; }
+  .footer-links a:hover { color: var(--text); text-decoration: none; }
+  .footer-copy { font-family: ui-monospace, monospace; font-size: 0.75rem; color: var(--faint); margin: 0; }
+
+  /* ── PRINT ───────────────────────────────────────────── */
+  @media print {
+    nav, .btt, .hero-bg { display: none !important; }
+    body { background: white !important; color: #111 !important; }
+    h1.name { color: #111 !important; -webkit-text-fill-color: #111 !important; background: none !important; }
+    .card { background: white !important; border-color: #ccc !important; box-shadow: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══ NAV ═══ -->
+<nav>
+  <div class="nav-inner">
+    <span class="nav-brand">hardlygospel<em>.github.io</em></span>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#tools">Tools</a>
+      <a href="#guides">Guides</a>
+      <a href="#hosting">Self-hosting</a>
+      <a href="#tabletop">Tabletop</a>
+    </div>
+  </div>
+</nav>
+
+<a href="#" class="btt" id="btt" aria-label="Back to top">↑</a>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero" id="top">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="hero-inner">
+    <p class="hero-eyebrow">Sydney, Australia</p>
+    <h1 class="name">Tony.</h1>
+    <p class="hero-title">
+      <span class="hl">Systems Administrator</span>
+      &nbsp;·&nbsp; Self-hosting Enthusiast
+    </p>
+    <p class="hero-desc">
+      I automate the tedious parts of running Linux and macOS, build tools for
+      sysadmins, and write guides for the games I play. Everything published here
+      is something I actually use.
+    </p>
+    <div class="ctas">
+      <a class="btn btn-primary" href="https://github.com/hardlygospel">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.37.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02.01 2.04.14 3 .4 2.28-1.55 3.29-1.23 3.29-1.23.66 1.66.25 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58C20.57 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+        github.com/hardlygospel
+      </a>
+      <a class="btn btn-outline" href="https://latenight.gg">
+        🌐 latenight.gg
+      </a>
+    </div>
+    <div class="hero-pills">
+      <span class="pill g">Python 3</span>
+      <span class="pill b">Linux</span>
+      <span class="pill b">macOS</span>
+      <span class="pill">Windows</span>
+      <span class="pill g">Self-hosting</span>
+      <span class="pill">Docker</span>
+      <span class="pill a">Path of Exile</span>
+      <span class="pill p">D&amp;D 5e</span>
+      <span class="pill">Sydney, AU</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ABOUT ═══ -->
+<section class="sec" id="about">
+  <div class="wrap">
+    <p class="sec-label">01 · About</p>
+    <h2 class="sec-title">Who I am</h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>
+          Systems administrator based in Sydney. I spend most of my time on Linux and
+          macOS — automating repetitive tasks, building tools for other sysadmins,
+          and keeping servers running cleanly.
+        </p>
+        <p>
+          Everything I publish is something I actually run. The cleanup scripts started
+          because I was tired of doing the same twelve steps on every new machine.
+          The sysadmin knife started because I wanted one tool instead of twelve open
+          tabs. The POE marketer started because spreadsheets got boring.
+        </p>
+        <p>
+          Outside work: Path of Exile, D&amp;D 5e, and experimenting with self-hosted
+          alternatives to services that have no business living in someone else's cloud.
+        </p>
+      </div>
+      <div>
+        <ul class="fact-list">
+          <li>
+            <span class="fact-lbl">Location</span>
+            <span class="fact-val">Sydney, Australia</span>
+          </li>
+          <li>
+            <span class="fact-lbl">Role</span>
+            <span class="fact-val">Systems Administrator</span>
+          </li>
+          <li>
+            <span class="fact-lbl">Languages</span>
+            <span class="fact-val">Python, Bash / Zsh / Fish, PowerShell</span>
+          </li>
+          <li>
+            <span class="fact-lbl">Platforms</span>
+            <span class="fact-val">Linux, macOS, Windows Server</span>
+          </li>
+          <li>
+            <span class="fact-lbl">Tooling</span>
+            <span class="fact-val">Docker, Cloudflare, Proxmox, Jellyfin</span>
+          </li>
+          <li>
+            <span class="fact-lbl">Blog</span>
+            <span class="fact-val"><a href="https://latenight.gg">latenight.gg</a></span>
+          </li>
+          <li>
+            <span class="fact-lbl">GitHub</span>
+            <span class="fact-val"><a href="https://github.com/hardlygospel">github.com/hardlygospel</a></span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SYSTEM TOOLS ═══ -->
+<section class="sec" id="tools">
+  <div class="wrap">
+    <p class="sec-label">02 · Tools</p>
+    <h2 class="sec-title">System tools &amp; scripts</h2>
+    <p class="sec-sub">Run once, walk away. Every script generates an HTML report and never touches passwords or personal files.</p>
+    <div class="card-grid">
+
+      <div class="card">
+        <div class="card-ico">⚔️</div>
+        <p class="card-name">Tony's Sysadmin Swiss Army Knife <span class="card-ver">v2.0.0</span></p>
+        <p class="card-desc">All-in-one sysadmin tool with 10 modules: morning checklist with HTML/JSON reports, Active Directory &amp; Azure AD, btop-style live watch dashboard, process manager (kill, find-by-port, tree), log viewer, network suite (HTTP/SSL/WHOIS/port scan), cleanup with apply mode, and SSH manager. Rich TUI on all platforms, Catppuccin GUI on Windows. Cron-friendly.</p>
+        <div class="card-badges">
+          <span class="badge b-mac">macOS</span>
+          <span class="badge b-linux">Linux</span>
+          <span class="badge b-win">Windows</span>
+          <span class="badge b-py">Python 3</span>
+          <span class="badge b-tab">Tab autocomplete</span>
+          <span class="badge b-gpl">GPL-3.0</span>
+        </div>
+        <div class="card-links">
+          <a class="card-lnk" href="https://github.com/hardlygospel/tonys-sysknife">github.com/hardlygospel/tonys-sysknife ↗</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-ico">🍎</div>
+        <p class="card-name">Tony's Ultimate Mac Clean</p>
+        <p class="card-desc">Deep cleans caches, sorts screenshots by date, archives old downloads, flushes DNS, purges browser caches, empties Trash, and saves an HTML report to the desktop. Optional <code>--full</code> mode adds Docker and Xcode derived data.</p>
+        <div class="card-badges">
+          <span class="badge b-mac">macOS</span>
+          <span class="badge b-py">Python 3</span>
+          <span class="badge b-mit">MIT</span>
+        </div>
+        <div class="card-links">
+          <a class="card-lnk" href="https://github.com/hardlygospel/tonys-ultimate-mac-clean">github.com/hardlygospel/tonys-ultimate-mac-clean ↗</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-ico">🐧</div>
+        <p class="card-name">Tony's Ultimate Linux Clean</p>
+        <p class="card-desc">Clears apt, snap, flatpak, npm and pip caches, vacuums systemd journals, purges browser caches, drops the RAM page cache, and saves an HTML report. Works across Ubuntu, Fedora, Arch, and derivatives.</p>
+        <div class="card-badges">
+          <span class="badge b-linux">Linux</span>
+          <span class="badge b-py">Python 3</span>
+          <span class="badge b-mit">MIT</span>
+        </div>
+        <div class="card-links">
+          <a class="card-lnk" href="https://github.com/hardlygospel/tonys-ultimate-linux-clean">github.com/hardlygospel/tonys-ultimate-linux-clean ↗</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-ico">🪟</div>
+        <p class="card-name">Tony's Ultimate Windows Clean</p>
+        <p class="card-desc">Clears Discord cache, Steam shader cache, Windows Update cache, prefetch files, event logs, and browser caches. Runs the built-in Disk Cleanup tool silently, then generates an HTML report. Gamer-aware.</p>
+        <div class="card-badges">
+          <span class="badge b-win">Windows</span>
+          <span class="badge b-py">Python 3</span>
+          <span class="badge b-mit">MIT</span>
+        </div>
+        <div class="card-links">
+          <a class="card-lnk" href="https://github.com/hardlygospel/tonys-ultimate-windows-clean">github.com/hardlygospel/tonys-ultimate-windows-clean ↗</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-ico">⚔️</div>
+        <p class="card-name">Steen POE Marketer <span class="card-ver">v3.0.0</span></p>
+        <p class="card-desc">Path of Exile market analysis terminal tool. 10 modules: currency arbitrage, divination cards, gem flip margins, economy overview, stash pricer, bulk calculator, watchlist with price deltas, top movers, and item search — powered by poe.ninja. Export to CSV, JSON, or HTML.</p>
+        <div class="card-badges">
+          <span class="badge b-mac">macOS</span>
+          <span class="badge b-linux">Linux</span>
+          <span class="badge b-win">Windows</span>
+          <span class="badge b-py">Python 3</span>
+          <span class="badge b-poe">Path of Exile</span>
+          <span class="badge b-tab">Tab autocomplete</span>
+          <span class="badge b-gpl">GPL-3.0</span>
+        </div>
+        <div class="card-links">
+          <a class="card-lnk" href="https://github.com/hardlygospel/steen-poe-marketer">github.com/hardlygospel/steen-poe-marketer ↗</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-ico">🤖</div>
+        <p class="card-name">WorkSafe AI</p>
+        <p class="card-desc">Private local AI assistant — 100% offline, no API keys, no data leaving the machine. Powered by Ollama. A focused, distraction-free interface for on-device language models.</p>
+        <div class="card-badges">
+          <span class="badge b-mac">macOS</span>
+          <span class="badge b-linux">Linux</span>
+          <span class="badge b-win">Windows</span>
+        </div>
+        <div class="card-links">
+          <a class="card-lnk" href="https://github.com/hardlygospel/worksafe-ai">github.com/hardlygospel/worksafe-ai ↗</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ GAMING GUIDES ═══ -->
+<section class="sec" id="guides">
+  <div class="wrap">
+    <p class="sec-label">03 · Guides</p>
+    <h2 class="sec-title">Gaming guides</h2>
+    <p class="sec-sub">The guide I wished I had when I started. Comprehensive, practical, and written for actual players.</p>
+    <div class="card-grid wide">
+
+      <div class="card">
+        <div class="card-ico">🚀</div>
+        <p class="card-name">EVE Online 2026 Guide</p>
+        <p class="card-desc">The most comprehensive EVE Online guide for 2026 — races, ISK-making methods (missions, exploration, industry, trading), ship fittings, skill progression roadmaps, PvP fundamentals, and corporation life. Built to carry a new pilot from character creation to financial independence.</p>
+        <div class="card-links">
+          <a class="card-lnk" href="https://github.com/hardlygospel/eve-online-2026-guide">github.com/hardlygospel/eve-online-2026-guide ↗</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-ico">🏰</div>
+        <p class="card-name">Ultima Online: Outlands 2026 Guide</p>
+        <p class="card-desc">Full UO Outlands guide — skill systems, character templates, dungeon maps and loot tables, PvP mechanics, crafting economy, and gold farming routes. Everything you need to go from fresh spawn to seasoned veteran on the largest active free-shard.</p>
+        <div class="card-links">
+          <a class="card-lnk" href="https://github.com/hardlygospel/uo-outlands-2026-guide">github.com/hardlygospel/uo-outlands-2026-guide ↗</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-ico">🎲</div>
+        <p class="card-name">D&amp;D 5e 2024 Guide</p>
+        <p class="card-desc">Complete D&amp;D 5e 2024 edition reference — all classes, subclasses, spell lists, combat mechanics, character builds, encounter design for DMs, and session tools. Covers both returning players migrating from 2014 and complete newcomers.</p>
+        <div class="card-links">
+          <a class="card-lnk" href="https://github.com/hardlygospel/dnd-2024-guide">github.com/hardlygospel/dnd-2024-guide ↗</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SELF-HOSTING ═══ -->
+<section class="sec" id="hosting">
+  <div class="wrap">
+    <p class="sec-label">04 · Infrastructure</p>
+    <h2 class="sec-title">Self-hosting &amp; infrastructure</h2>
+    <p class="sec-sub">Running my own stack. No subscriptions, no data in someone else's cloud.</p>
+    <div class="card-grid wide">
+
+      <div class="card">
+        <div class="card-ico">🎬</div>
+        <p class="card-name">Jellyfin Mediastack</p>
+        <p class="card-desc">Self-hosted media automation stack in Docker Compose — Radarr, Sonarr, Prowlarr, qBittorrent, and Jellyseerr wired together and ready to go. One command brings the entire media server online.</p>
+        <div class="card-badges">
+          <span class="badge b-dock">Docker</span>
+          <span class="badge b-self">Self-hosted</span>
+        </div>
+        <div class="card-links">
+          <a class="card-lnk" href="https://github.com/hardlygospel/jellyfin-mediastack">github.com/hardlygospel/jellyfin-mediastack ↗</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-ico">🔒</div>
+        <p class="card-name">Home Proxy Tunnel</p>
+        <p class="card-desc">Reverse HTTPS proxy tunnel via Cloudflare — securely reach your home network from anywhere without opening ports or exposing an IP. Works cleanly behind NAT and CGNAT.</p>
+        <div class="card-badges">
+          <span class="badge b-self">Self-hosted</span>
+        </div>
+        <div class="card-links">
+          <a class="card-lnk" href="https://github.com/hardlygospel/home-proxy-tunnel">github.com/hardlygospel/home-proxy-tunnel ↗</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-ico">🌐</div>
+        <p class="card-name">Xray Reality Proxy</p>
+        <p class="card-desc">One-script install for Xray-core with a VLESS + Reality configuration. Designed for networks that do deep packet inspection — the connection looks like normal TLS traffic to a legitimate host.</p>
+        <div class="card-badges">
+          <span class="badge b-linux">Linux</span>
+          <span class="badge b-self">Self-hosted</span>
+        </div>
+        <div class="card-links">
+          <a class="card-lnk" href="https://github.com/hardlygospel/xray-reality-proxy">github.com/hardlygospel/xray-reality-proxy ↗</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TABLETOP ═══ -->
+<section class="sec" id="tabletop">
+  <div class="wrap">
+    <p class="sec-label">05 · Tabletop</p>
+    <h2 class="sec-title">D&amp;D 5e references</h2>
+    <p class="sec-sub">Self-contained single-page character references. No build step, no server required — just open the file.</p>
+    <div class="card-grid wide">
+
+      <div class="card">
+        <div class="card-ico">🍄</div>
+        <p class="card-name">Aldraxis Timberwalk</p>
+        <p class="card-desc">A single-page D&amp;D 5e reference for a Wood Elf Druid of the Circle of Spores. Full level 1–20 class progression, all always-prepared circle spells, complete PHB + XGE + TCE druid spell list with live search, Wild Shape stat cards for every notable form, a tier-by-tier play guide, and expanded combat tactics. Haunted-forest dark theme, print-ready stylesheet.</p>
+        <div class="card-badges">
+          <span class="badge b-html">HTML / CSS</span>
+          <span class="badge b-dnd">D&amp;D 5e</span>
+          <span class="badge b-elf">Wood Elf Druid</span>
+          <span class="badge b-mit">MIT</span>
+        </div>
+        <div class="card-links">
+          <a class="card-lnk" href="https://hardlygospel.github.io/aldraxis-timberwalk/">hardlygospel.github.io/aldraxis-timberwalk ↗</a>
+          <a class="card-lnk muted" href="https://github.com/hardlygospel/aldraxis-timberwalk">source on github ↗</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="https://github.com/hardlygospel">github.com/hardlygospel</a>
+      <a href="https://latenight.gg">latenight.gg</a>
+      <a href="https://hardlygospel.github.io/aldraxis-timberwalk/">aldraxis-timberwalk</a>
+    </div>
+    <p class="footer-copy">Built by Tony · Sydney · Cleanup scripts MIT · Sysknife &amp; Steen POE Marketer GPL-3.0</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  /* Back to top */
+  var btt = document.getElementById('btt');
+  if (btt) {
+    window.addEventListener('scroll', function () {
+      btt.classList.toggle('show', window.scrollY > 420);
+    }, { passive: true });
+  }
+
+  /* Nav active section highlight */
+  var links = Array.from(document.querySelectorAll('.nav-links a[href^="#"]'));
+  var pairs = links.map(function (a) {
+    return { el: document.getElementById(a.getAttribute('href').slice(1)), a: a };
+  }).filter(function (p) { return p.el; });
+
+  function upd() {
+    var y = window.scrollY + 72;
+    var active = pairs[0];
+    pairs.forEach(function (p) { if (p.el.offsetTop <= y) active = p; });
+    links.forEach(function (a) { a.classList.remove('active'); });
+    if (active) active.a.classList.add('active');
+  }
+  if (pairs.length) {
+    window.addEventListener('scroll', upd, { passive: true });
+    upd();
+  }
+})();
+</script>
+
+</body>
+</html>
