@@ -218,6 +218,7 @@
   .b-linux { background: #27500A; color: #C0DD97; }
   .b-win   { background: #3C3489; color: #CECBF6; }
   .b-py    { background: #633806; color: #FAC775; }
+  .b-rs    { background: #4A1E00; color: #F4A261; }
   .b-poe   { background: #5C2E00; color: #FAC97A; }
   .b-tab   { background: #003D52; color: #7DD6F0; }
   .b-gpl   { background: #2E1065; color: #C4B5FD; }
@@ -642,9 +643,9 @@
       <div class="card">
         <div class="card-ico">🏠</div>
         <p class="card-name">Home.sh <span style="font-size:0.7rem;font-family:ui-monospace,monospace;background:rgba(246,173,85,0.12);color:var(--amber);border:1px solid rgba(246,173,85,0.3);border-radius:4px;padding:1px 6px;vertical-align:middle;letter-spacing:0.06em;">PROOF OF CONCEPT</span></p>
-        <p class="card-desc"><strong>Early-stage experiment — not production-ready.</strong> A self-hosted SSH terminal home: live dashboard with clock, world clocks, weather, Hacker News, a virtual cat, inline todos, and lo-fi radio; multi-room chat with @mention notifications; personal notes, bookmarks, and arcade games (Snake, Wordle, Tetris, Minesweeper); six themes; web companion at :8080. Full stack: PostgreSQL, Icecast, Liquidsoap in Docker Compose. Rough edges expected.</p>
+        <p class="card-desc"><strong>Early-stage experiment — not production-ready.</strong> A cozy self-hosted SSH terminal home written in Rust. Inspired by <a href="https://github.com/mpiorowski/late-sh">late.sh</a>. Features: lo-fi radio via Icecast (starts playing on connect), multi-room real-time chat, Hacker News feed, world clocks, virtual cat (feed/water/groom daily — neglect it and it dies), Snake &amp; Wordle, 63 themes, PostgreSQL + Docker Compose. <code>ssh -p 2222 yourserver</code> and you're in.</p>
         <div class="card-badges">
-          <span class="badge b-py">Python 3</span>
+          <span class="badge b-rs">Rust</span>
           <span class="badge b-dock">Docker</span>
           <span class="badge b-self">Self-hosted</span>
           <span class="badge b-linux">Linux</span>
