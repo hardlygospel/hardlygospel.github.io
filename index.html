@@ -104,15 +104,13 @@
     max-width: 1100px; margin: 0 auto; padding: 0 2rem;
     width: 100%;
   }
-  .hero-banner {
+  .card-banner {
     display: block;
     width: 100%;
-    max-width: 720px;
     height: auto;
-    margin: 0 0 1.8rem;
-    border-radius: 10px;
+    margin: 0 0 0.75rem;
+    border-radius: 8px;
     border: 1px solid var(--border);
-    box-shadow: 0 0 0 1px rgba(104,211,145,0.10), 0 16px 48px rgba(0,0,0,0.45);
   }
   .hero-eyebrow {
     font-family: ui-monospace, monospace;
@@ -305,7 +303,6 @@
 <section class="hero" id="top">
   <div class="hero-bg" aria-hidden="true"></div>
   <div class="hero-inner">
-    <img class="hero-banner" src="late-sh-banner.png" alt="late.sh — a clubhouse for developers, nerds and geeks">
     <p class="hero-eyebrow">Launceston, Tasmania</p>
     <div style="display:inline-flex;align-items:center;gap:0.5rem;background:rgba(246,173,85,0.08);border:1px solid rgba(246,173,85,0.35);border-radius:6px;padding:0.35rem 0.85rem;margin-bottom:1.2rem;font-family:ui-monospace,monospace;font-size:0.75rem;letter-spacing:0.06em;color:var(--amber);">
       <span style="font-size:0.85em;">⚠</span> Some repos here are proofs of concept — experiments, not production-ready tools.
@@ -692,6 +689,7 @@
     <div class="card-grid wide">
 
       <div class="card">
+        <img class="card-banner" src="late-sh-banner.png" alt="late.sh — the upstream project home.sh feeds into">
         <div class="card-ico">🏠</div>
         <p class="card-name">Home.sh <span style="font-size:0.7rem;font-family:ui-monospace,monospace;background:rgba(246,173,85,0.12);color:var(--amber);border:1px solid rgba(246,173,85,0.3);border-radius:4px;padding:1px 6px;vertical-align:middle;letter-spacing:0.06em;">PROOF OF CONCEPT</span></p>
         <p class="card-desc"><strong>A Frankenstein project — built to push ideas upstream to <a href="https://github.com/mpiorowski/late-sh">late.sh</a>, not for personal use.</strong> A cozy self-hosted SSH terminal home written in Rust. Features: lo-fi radio via Icecast (starts playing on connect), multi-room real-time chat, Hacker News feed, world clocks, virtual cat (feed/water/groom daily — neglect it and it gets unhappy, but it never dies), Snake &amp; Wordle, 63 themes, PostgreSQL + Docker Compose. <code>ssh -p 2222 yourserver</code> and you're in. Also accessible at <a href="http://latenight.gg">latenight.gg</a> (the original name) and <a href="http://myplace.gg">myplace.gg</a>.</p>
