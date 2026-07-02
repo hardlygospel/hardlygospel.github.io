@@ -192,7 +192,7 @@
   .fact-val { color: var(--text); }
 
   /* ── CARDS ───────────────────────────────────────────── */
-  .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; }
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; align-items: start; }
   .card-grid.wide { grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); }
   .card {
     background: var(--bg-card); border: 1px solid var(--border);
@@ -386,7 +386,7 @@
           the two of us were never going to work out.
         </p>
         <p>
-          I own and run one Discord server. It's lived under two names —
+          I own and run <a href="http://myplace.gg">one Discord server</a>. It's lived under two names —
           <a href="http://latenight.gg"><strong>latenight.gg</strong></a> and
           <a href="http://myplace.gg"><strong>myplace.gg</strong></a> — and I renamed it
           to better match the people in it and the way the place had grown. Same room,
@@ -683,7 +683,7 @@
       <div class="card">
         <div class="card-ico">🏠</div>
         <p class="card-name">Home.sh <span style="font-size:0.7rem;font-family:ui-monospace,monospace;background:rgba(246,173,85,0.12);color:var(--amber);border:1px solid rgba(246,173,85,0.3);border-radius:4px;padding:1px 6px;vertical-align:middle;letter-spacing:0.06em;">PROOF OF CONCEPT</span></p>
-        <p class="card-desc"><strong>A Frankenstein project — built to push ideas upstream to <a href="https://github.com/mpiorowski/late-sh">late.sh</a>, not for personal use.</strong> A cozy self-hosted SSH terminal home written in Rust. Features: lo-fi radio via Icecast (starts playing on connect), multi-room real-time chat, Hacker News feed, world clocks, virtual cat (feed/water/groom daily — neglect it and it gets unhappy, but it never dies), Snake &amp; Wordle, 63 themes, PostgreSQL + Docker Compose. <code>ssh -p 2222 yourserver</code> and you're in. Also accessible at <a href="http://latenight.gg">latenight.gg</a> (the original name) and <a href="http://myplace.gg">myplace.gg</a>.</p>
+        <p class="card-desc"><strong>A Frankenstein project — built to push ideas upstream to <a href="https://github.com/mpiorowski/late-sh">late.sh</a>, not for personal use.</strong> A cozy self-hosted SSH terminal home written in Rust. Features: lo-fi radio via Icecast (starts playing on connect), multi-room real-time chat, Hacker News feed, world clocks, virtual cat (feed/water/groom daily — neglect it and it gets unhappy, but it never dies), Snake &amp; Wordle, 63 themes, PostgreSQL + Docker Compose. <code>ssh -p 2222 yourserver</code> and you're in.</p>
         <div class="card-badges">
           <span class="badge b-rs">Rust</span>
           <span class="badge b-dock">Docker</span>
