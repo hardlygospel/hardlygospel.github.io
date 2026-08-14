@@ -261,8 +261,8 @@
     font-family: ui-monospace, monospace; font-size: 0.68rem; letter-spacing: 0.14em;
     text-transform: uppercase; color: var(--green); margin: 0 0 1rem;
   }
-  .topic-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.8rem; }
-  .topic-list li { font-size: 0.87rem; color: var(--dim); line-height: 1.6; border-left: 2px solid var(--border-s); padding-left: 0.75rem; }
+  .topic-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.6rem; }
+  .topic-list li { font-size: 0.83rem; color: var(--dim); line-height: 1.5; border-left: 2px solid var(--border-s); padding-left: 0.75rem; }
   .topic-list li strong { color: var(--text); }
 
   /* ── BACK TO TOP ─────────────────────────────────────── */
@@ -367,15 +367,16 @@
     <div class="featured-grid">
       <div>
         <div class="featured-ico">🐧</div>
-        <p class="featured-name">BashQuest <span class="card-ver">v2.0.0</span></p>
+        <p class="featured-name">BashQuest <span class="card-ver">v3.0.0</span></p>
         <p class="featured-desc">
           An interactive terminal game that teaches Linux the way you actually learn it:
-          by typing real commands under a little pressure. 28 levels across five tiers,
-          a pseudo-login system with lives and XP, a mentor character called ROOT who
-          reacts to every answer and streak, six achievements, and a graduation ceremony
-          that writes you an actual certificate to keep. Pure Bash, zero dependencies,
-          runs on Linux and macOS out of the box. Finish it and you can comfortably
-          operate as a Linux systems administrator.
+          by typing real commands under a little pressure. 61 levels across twelve tiers,
+          from basic navigation all the way to LVM, enterprise networking and SAN storage,
+          kernel panics and building your own kernel, and ricing a tiling window manager.
+          A mentor character called Tasmania reacts to every answer and streak, six
+          achievements, and a graduation ceremony that writes you an actual certificate to
+          keep. Pure Bash, zero dependencies. Finish it and you can comfortably administrate
+          a corporate network, or set up a genuinely great-looking home setup.
         </p>
         <div class="card-badges">
           <span class="badge b-linux">Linux</span>
@@ -393,13 +394,20 @@
         </div>
       </div>
       <div class="featured-topics">
-        <p class="featured-topics-lbl">28 levels · 5 tiers</p>
+        <p class="featured-topics-lbl">61 levels · 12 tiers</p>
         <ul class="topic-list">
           <li><strong>Beginner</strong>: navigation, files, search, permissions</li>
           <li><strong>Intermediate</strong>: processes, text tools, networking, scripting basics</li>
           <li><strong>Pipes &amp; Patterns</strong>: piping, redirection, regex, grep, sed, awk</li>
           <li><strong>Power Tools</strong>: xargs/find, disk &amp; system info, users, SSH, environment</li>
-          <li><strong>Expert</strong>: cron, logs, packages, compression, strings, arrays, error handling, systemd</li>
+          <li><strong>Expert</strong>: cron, logs, packages, compression, strings, arrays, systemd</li>
+          <li><strong>Storage &amp; Filesystems</strong>: partitioning, filesystems, mounting, LVM</li>
+          <li><strong>File Editing &amp; Sharing</strong>: vim, ACLs, Samba, NFS, rsync</li>
+          <li><strong>Networking</strong>: IP, routing, DNS, firewalls, VLANs, bonding</li>
+          <li><strong>Storage Networking &amp; SAN</strong>: iSCSI, autofs, multipath, Fibre Channel</li>
+          <li><strong>Boot Process &amp; Kernel</strong>: GRUB, boot managers, kernel panics, building a kernel</li>
+          <li><strong>Media Management</strong>: ffmpeg, library organization, home media servers</li>
+          <li><strong>Desktop Ricing</strong>: X11/Wayland, i3, AwesomeWM, compositors, dotfiles</li>
         </ul>
       </div>
     </div>
