@@ -243,6 +243,28 @@
   .card-stars { display: flex; gap: 5px; flex-wrap: wrap; align-items: center; margin-top: 1px; }
   .card-stars img { height: 18px; vertical-align: middle; }
 
+  /* ── FEATURED PROJECT ────────────────────────────────── */
+  .sec.featured { padding-top: 3.5rem; border-top: none; }
+  .featured-grid {
+    display: grid; grid-template-columns: 1.3fr 1fr; gap: 2.5rem;
+    background: var(--bg-card); border: 1px solid var(--border-s);
+    border-radius: 16px; padding: 2.25rem 2.5rem;
+    box-shadow: 0 0 0 1px var(--border-s), 0 24px 60px rgba(0,0,0,0.4);
+  }
+  @media (max-width: 780px) { .featured-grid { grid-template-columns: 1fr; padding: 1.75rem; } }
+  .featured-ico { font-size: 2.75rem; margin: 0 0 0.6rem; line-height: 1; }
+  .featured-name { font-size: 1.4rem; font-weight: 700; color: var(--text); margin: 0 0 0.7rem; }
+  .featured-name .card-ver { font-size: 0.75rem; }
+  .featured-desc { font-size: 1rem; color: var(--dim); line-height: 1.8; margin: 0 0 1.15rem; }
+  .featured-topics { background: var(--bg-1); border: 1px solid var(--border); border-radius: 10px; padding: 1.4rem 1.6rem; }
+  .featured-topics-lbl {
+    font-family: ui-monospace, monospace; font-size: 0.68rem; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--green); margin: 0 0 1rem;
+  }
+  .topic-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.8rem; }
+  .topic-list li { font-size: 0.87rem; color: var(--dim); line-height: 1.6; border-left: 2px solid var(--border-s); padding-left: 0.75rem; }
+  .topic-list li strong { color: var(--text); }
+
   /* ── BACK TO TOP ─────────────────────────────────────── */
   .btt {
     position: fixed; bottom: 2rem; right: 2rem;
@@ -283,6 +305,7 @@
       <a href="https://hardlygospel.github.io/tony-hosaroygard/links.html" class="nav-ext">Links ↗</a>
       <a href="https://hardlygospel.github.io/tony-hosaroygard/" class="nav-ext">Resume ↗</a>
       <a href="https://www.linkedin.com/in/tonyharrisson/" class="nav-ext">LinkedIn ↗</a>
+      <a href="#bashquest">🐧 BashQuest</a>
       <a href="#about">About</a>
       <a href="#tools">Tools</a>
       <a href="#guides">Gaming guides</a>
@@ -333,6 +356,52 @@
       <span class="pill p">D&amp;D 5e</span>
       <span class="pill">Launceston, TAS</span>
       <span class="pill p">Discord · <a href="http://myplace.gg">Home</a></span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FEATURED: BASHQUEST ═══ -->
+<section class="sec featured" id="bashquest">
+  <div class="wrap">
+    <p class="sec-label">★ Featured project</p>
+    <div class="featured-grid">
+      <div>
+        <div class="featured-ico">🐧</div>
+        <p class="featured-name">BashQuest <span class="card-ver">v2.0.0</span></p>
+        <p class="featured-desc">
+          An interactive terminal game that teaches Linux the way you actually learn it:
+          by typing real commands under a little pressure. 28 levels across five tiers,
+          a pseudo-login system with lives and XP, a mentor character called ROOT who
+          reacts to every answer and streak, six achievements, and a graduation ceremony
+          that writes you an actual certificate to keep. Pure Bash, zero dependencies,
+          runs on Linux and macOS out of the box. Finish it and you can comfortably
+          operate as a Linux systems administrator.
+        </p>
+        <div class="card-badges">
+          <span class="badge b-linux">Linux</span>
+          <span class="badge b-mac">macOS</span>
+          <span class="badge b-bash">Bash</span>
+          <span class="badge b-gpl">GPL-3.0</span>
+        </div>
+        <div class="card-stars" style="margin-top:10px;">
+          <img src="https://img.shields.io/github/stars/hardlygospel/bashquest?style=flat-square&color=gold&logo=github" alt="Stars">
+          <img src="https://img.shields.io/github/forks/hardlygospel/bashquest?style=flat-square&color=steelblue&logo=github" alt="Forks">
+        </div>
+        <div class="ctas" style="margin:1.35rem 0 0;">
+          <a class="btn btn-primary" href="https://hardlygospel.github.io/bashquest/">▶ Play / read the docs</a>
+          <a class="btn btn-outline" href="https://github.com/hardlygospel/bashquest">Source on GitHub ↗</a>
+        </div>
+      </div>
+      <div class="featured-topics">
+        <p class="featured-topics-lbl">28 levels · 5 tiers</p>
+        <ul class="topic-list">
+          <li><strong>Beginner</strong>: navigation, files, search, permissions</li>
+          <li><strong>Intermediate</strong>: processes, text tools, networking, scripting basics</li>
+          <li><strong>Pipes &amp; Patterns</strong>: piping, redirection, regex, grep, sed, awk</li>
+          <li><strong>Power Tools</strong>: xargs/find, disk &amp; system info, users, SSH, environment</li>
+          <li><strong>Expert</strong>: cron, logs, packages, compression, strings, arrays, error handling, systemd</li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
@@ -579,26 +648,6 @@
         <div class="card-links">
           <a class="card-lnk" href="https://hardlygospel.github.io/firewall-generator/">hardlygospel.github.io/firewall-generator ↗</a>
           <a class="card-lnk muted" href="https://github.com/hardlygospel/firewall-generator">source on github ↗</a>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-ico">🐧</div>
-        <p class="card-name">BashQuest <span class="card-ver">v1.0.0</span></p>
-        <p class="card-desc">Interactive terminal game that teaches Linux and Bash from the ground up. Pseudo login, 8 progressive levels: navigation, files, tar archives, grep &amp; find, permissions, processes, text processing (awk/sed/cut), networking, and shell scripting. Lives, XP, leaderboard, per-challenge hints, and a full command reference. Pure Bash, no dependencies.</p>
-        <div class="card-badges">
-          <span class="badge b-linux">Linux</span>
-          <span class="badge b-mac">macOS</span>
-          <span class="badge b-bash">Bash</span>
-          <span class="badge b-gpl">GPL-3.0</span>
-        </div>
-        <div class="card-stars">
-          <img src="https://img.shields.io/github/stars/hardlygospel/bashquest?style=flat-square&color=gold&logo=github" alt="Stars">
-          <img src="https://img.shields.io/github/forks/hardlygospel/bashquest?style=flat-square&color=steelblue&logo=github" alt="Forks">
-        </div>
-        <div class="card-links">
-          <a class="card-lnk" href="https://hardlygospel.github.io/bashquest/">hardlygospel.github.io/bashquest ↗</a>
-          <a class="card-lnk" href="https://github.com/hardlygospel/bashquest">github.com/hardlygospel/bashquest ↗</a>
         </div>
       </div>
 
